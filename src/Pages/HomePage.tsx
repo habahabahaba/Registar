@@ -8,9 +8,8 @@
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-interface HomePageProps {}
 
-const HomePage: FC<HomePageProps> = () => {
+const HomePage: FC = () => {
   // JSX:
   return <div>HomePage</div>;
 };
