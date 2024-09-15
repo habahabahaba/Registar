@@ -14,9 +14,15 @@ import type { FC } from 'react';
 const Header: FC = () => {
   // JSX:
   return (
-    <nav>
-      <Link to='/'>NPM Registry</Link>
-      <SearchInput />
+    <nav className='flex items-center justify-between px-4 border-b h-14'>
+      <div className='flex items-center space-x-2 '>
+        <Link to='/' className='text-lg font-bold'>
+          NPM Registry
+        </Link>
+      </div>
+      <div className='w-full max-w-xl ml-4'>
+        <SearchInput />
+      </div>
     </nav>
   );
 };
