@@ -4,7 +4,7 @@ export interface PackageResult {
     name: string;
     description: string;
     version: string;
-    keywords: string[];
+    keywords?: string[];
   };
   searchScore: number;
 }

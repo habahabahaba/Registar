@@ -10,14 +10,12 @@ import Header from '../Components/Header';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-interface RootProps {}
 
-const Root: FC<RootProps> = () => {
+const Root: FC = () => {
   // JSX:
   return (
-    <div>
+    <div className='container mx-auto lg:px-20'>
       <Header />
-      Root
       <Outlet />
     </div>
   );
