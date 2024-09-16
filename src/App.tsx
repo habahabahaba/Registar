@@ -3,12 +3,14 @@
 // Store:
 // React Router:
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// Loaders:
+import searchLoader from './Pages/search/searchLoader';
 // React:
 // Context:
 // Pages:
 import Root from './Pages/Root';
 import HomePage from './Pages/HomePage';
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/search/SearchPage';
 import DetailsPage from './Pages/DetailsPage';
 // Components:
 // CSS:
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <SearchPage />,
+        loader: searchLoader,
       },
       {
         path: '/packages/:name',

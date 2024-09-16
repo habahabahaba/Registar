@@ -30,7 +30,7 @@ const SearchInput: FC = () => {
     if (!term.length) return;
 
     // Navigating to the search page:
-    navigate(`/search?=${term}`);
+    navigate(`/search?term=${term}`);
   }
 
   // JSX:
