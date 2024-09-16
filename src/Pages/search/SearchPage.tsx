@@ -6,6 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 // React:
 // Context:
 // Components:
+import PackageListItem from '../../Components/PackageListItem';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -18,9 +19,11 @@ const SearchPage: FC = () => {
 
   // JSX:
   return (
-    <div>{`Search results:  ${
-      !packages ? 'No results' : JSON.stringify(packages)
-    }`}</div>
+    <div>
+      {packages.map((pack) => (
+        <PackageListItem packageSummary={pack} key={pack.description} />
+      ))}
+    </div>
   );
 };
 
