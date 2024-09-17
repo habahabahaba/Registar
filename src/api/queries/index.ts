@@ -29,7 +29,12 @@ async function searchPackages(term: string): Promise<PackageSummary[] | never> {
 }
 
 async function fetchPackageDetails(
-  params: type
-): Promise<PackageDetails | never> {}
+  packageName: string
+): Promise<PackageDetails | never> {
+  const res = await fetch(`${BASE_URL}/${packageName}`);
+  const data: PackageDetails = await res.json();
+
+  return data;
+}
 
 export { searchPackages, fetchPackageDetails };
