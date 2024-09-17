@@ -2,6 +2,7 @@
 import type {
   PackageSummary,
   searchPackagesResponse,
+  PackageDetails,
 } from '../types/index.types';
 
 const BASE_URL = 'https://registry.npmjs.org';
@@ -27,4 +28,8 @@ async function searchPackages(term: string): Promise<PackageSummary[] | never> {
   );
 }
 
-export { searchPackages };
+async function fetchPackageDetails(
+  params: type
+): Promise<PackageDetails | never> {}
+
+export { searchPackages, fetchPackageDetails };

@@ -13,3 +13,4 @@ export interface searchPackagesResponse {
   objects: PackageResult[];
   total: number;
 }
+export interface PackageDetails {}

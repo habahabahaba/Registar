@@ -5,13 +5,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Loaders:
 import searchLoader from './Pages/search/searchLoader';
+import detailsLoader from './Pages/details/detailsLoader';
 // React:
 // Context:
 // Pages:
 import Root from './Pages/Root';
 import HomePage from './Pages/HomePage';
 import SearchPage from './Pages/search/SearchPage';
-import DetailsPage from './Pages/DetailsPage';
+import DetailsPage from './Pages/details/DetailsPage';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
