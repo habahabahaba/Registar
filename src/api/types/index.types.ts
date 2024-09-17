@@ -13,4 +13,18 @@ export interface searchPackagesResponse {
   objects: PackageResult[];
   total: number;
 }
-export interface PackageDetails {}
+export interface PackageDetails {
+  name: string;
+  description: string;
+  readme: string;
+  author: {
+    name: string;
+    email: string;
+  };
+  maintainers: {
+    name: string;
+    email: string;
+  };
+  license: string;
+  latest: string;
+}
