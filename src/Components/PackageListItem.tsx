@@ -19,9 +19,9 @@ const PackageListItem: FC<PackageListItemProps> = ({
   packageSummary: { name, description, version, keywords },
 }) => {
   // JSX:
-  const renderedKeywords = (keywords || []).map((kw) => (
+  const renderedKeywords = (keywords || []).map((kw, i) => (
     <span
-      key={kw}
+      key={i + kw}
       className='border py-0.5 px-1 text-xs bg-slate-200 rounded w-max'
     >
       {kw}
