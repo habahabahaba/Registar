@@ -4,7 +4,7 @@ import { searchPackages } from '../../api/queries';
 
 // Types, interfaces and enumns:
 import type { PackageSummary } from '../../api/types/index.types';
-interface PackageSearchParams {
+interface PackageSearchLoaderArg {
   request: Request;
 }
 export interface SearchLoaderReturn {
@@ -13,7 +13,7 @@ export interface SearchLoaderReturn {
 
 export default async function searchLoader({
   request,
-}: PackageSearchParams): Promise<SearchLoaderReturn | never> {
+}: PackageSearchLoaderArg): Promise<SearchLoaderReturn | never> {
   const { searchParams } = new URL(request.url);
   const term = searchParams.get('term');
 
