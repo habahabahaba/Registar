@@ -12,10 +12,11 @@ import type { FC } from 'react';
 import type { DetailsLoaderReturn } from './detailsLoader';
 
 const DetailsPage: FC = () => {
+  // console.log(useLoaderData());
   const {
     packageDetails: { name, description, license, author, latest },
   } = useLoaderData() as DetailsLoaderReturn;
-  console.log(useLoaderData());
+
   // JSX:
   return (
     <div className='space-y-4'>
