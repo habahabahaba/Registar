@@ -22,9 +22,13 @@ const SearchPage: FC = () => {
     <PackageListItem packageSummary={pack} key={pack.name} />
   ));
 
+  const searchHeading = packages.length
+    ? `${packages.length} packages found:`
+    : `No Results`;
+
   return (
     <div>
-      <h1 className='text-2xl font-bold my-6'>Search Results:</h1>
+      <h1 className='text-2xl font-bold my-6'>{searchHeading}</h1>
       <div className='space-y-4 mt-4'>{renderedPackages}</div>
     </div>
   );
