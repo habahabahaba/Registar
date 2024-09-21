@@ -1,6 +1,8 @@
 // 3rd party:
 // React-Icons:
 import { MdSearch } from 'react-icons/md';
+// Utils:
+import { encodePath } from '../utils';
 // Redux RTK:
 // Store:
 // React Router:
@@ -29,8 +31,11 @@ const SearchInput: FC = () => {
     const term = input.trim();
     if (!term.length) return;
 
+    // Encoding search term:
+    const encodedTerm = encodePath(term);
+
     // Navigating to the search page:
-    navigate(`/search?term=${term}`);
+    navigate(`/search?term=${encodedTerm}`);
   }
 
   // JSX:
