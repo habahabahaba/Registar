@@ -1,4 +1,6 @@
 // 3rd party:
+// Utils:
+import { decodePath } from '../../utils';
 // Queries:
 import { searchPackages } from '../../api/queries';
 
@@ -21,7 +23,10 @@ export default async function searchLoader({
     throw new Error('Search term must be provided.');
   }
 
-  const packages = await searchPackages(term);
+  // Decoding term:
+  const decodedTerm = decodePath(term);
+
+  const packages = await searchPackages(decodedTerm);
 
   return { packages };
 }
