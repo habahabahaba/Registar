@@ -5,7 +5,7 @@ import { encodePath } from '../utils';
 // Store:
 // React Router:
 // Navigation:
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // React:
 // Context:
 // Components:
@@ -20,6 +20,11 @@ interface PackageListItemProps {
 const PackageListItem: FC<PackageListItemProps> = ({
   packageSummary: { name, description, version, keywords },
 }) => {
+  // Current location, to pass to DetailsPage:
+  const { pathname, search } = useLocation();
+  const searchPath: string = pathname + search;
+  // console.log('searchPath from PackageListItem: ', searchPath);
+
   // Removing slashes from name:
   const encodedName = encodePath(name);
 
@@ -46,6 +51,7 @@ const PackageListItem: FC<PackageListItemProps> = ({
       <div className='mr-6'>
         <Link
           to={`/packages/${encodedName}`}
+          state={{ searchPath }}
           className='py-2 px-3 rounded bg-black text-white text-lg'
         >
           View
