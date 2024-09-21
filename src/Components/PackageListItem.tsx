@@ -1,4 +1,6 @@
 // 3rd party:
+// Utils:
+import { encodePath } from '../utils';
 // Redux RTK:
 // Store:
 // React Router:
@@ -18,6 +20,9 @@ interface PackageListItemProps {
 const PackageListItem: FC<PackageListItemProps> = ({
   packageSummary: { name, description, version, keywords },
 }) => {
+  // Removing slashes from name:
+  const encodedName = encodePath(name);
+
   // JSX:
   const renderedKeywords = (keywords || []).map((kw, i) => (
     <span
@@ -31,7 +36,7 @@ const PackageListItem: FC<PackageListItemProps> = ({
   return (
     <div className='border p-4 rounded flex justify-between items-center'>
       <div className='flex flex-col gap-2'>
-        <Link to={`/packages/${name}`} className='text-xl font-bold'>
+        <Link to={`/packages/${encodedName}`} className='text-xl font-bold'>
           {name}
         </Link>
         <p className='text-sm text-gray-500'>{description}</p>
@@ -40,7 +45,7 @@ const PackageListItem: FC<PackageListItemProps> = ({
       </div>
       <div className='mr-6'>
         <Link
-          to={`/packages/${name}`}
+          to={`/packages/${encodedName}`}
           className='py-2 px-3 rounded bg-black text-white text-lg'
         >
           View
