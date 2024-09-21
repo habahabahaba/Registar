@@ -1,4 +1,6 @@
 // 3rd party:
+// Utils:
+import { decodePath } from '../../utils';
 // Queries:
 import { fetchPackageDetails } from '../../api/queries';
 
@@ -21,7 +23,10 @@ export default async function detailsLoader({
     throw new Error('Package name was not provided');
   }
 
-  const packageDetails = await fetchPackageDetails(packageName);
+  // Decoding packageName:
+  const decodedPackageName = decodePath(packageName);
+
+  const packageDetails = await fetchPackageDetails(decodedPackageName);
 
   return { packageDetails };
 }
