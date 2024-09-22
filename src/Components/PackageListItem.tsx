@@ -41,7 +41,11 @@ const PackageListItem: FC<PackageListItemProps> = ({
   return (
     <div className='border p-4 rounded flex justify-between items-center'>
       <div className='flex flex-col gap-2'>
-        <Link to={`/packages/${encodedName}`} className='text-xl font-bold'>
+        <Link
+          to={`/packages/${encodedName}`}
+          state={{ searchPath }}
+          className='text-xl font-bold'
+        >
           {name}
         </Link>
         <p className='text-sm text-gray-500'>{description}</p>
