@@ -1,18 +1,10 @@
 // Queries:
-import { fetchFeaturedPackages } from '../../api/queries';
+import { fetchFeaturedPackagesDetails } from '../../api/queries';
 
-export default async function homeLoader({
-  params,
-}: PackageDetailsLoaderArg): Promise<DetailsLoaderReturn | never> {
-  const { packageName } = params;
+// Types, interfaces and enumns:
+import type { PackageDetails } from '../../api/types/index.types';
 
-  if (!packageName) {
-    throw new Error('Package name was not provided');
-  }
-
-  // Decoding packageName:
-  const decodedPackageName = decodePath(packageName);
-
+export default async function homeLoader(): Promise<PackagesDetails[] | never> {
   const packageDetails = await fetchPackageDetails(decodedPackageName);
 
   return { packageDetails };

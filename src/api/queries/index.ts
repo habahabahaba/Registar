@@ -7,6 +7,8 @@ import type {
 
 const BASE_URL = 'https://registry.npmjs.org';
 
+const FEATURED_PACKAGES: string[] = ['react', 'typescript', 'esbuild', 'vite'];
+
 // Queries:
 async function searchPackages(term: string): Promise<PackageSummary[] | never> {
   // Parsing the search term:
@@ -37,13 +39,19 @@ async function fetchPackageDetails(
   return data;
 }
 
-async function fetchFeaturedPackages(
-  packageName: string
-): Promise<PackageDetails | never> {
-  const res = await fetch(`${BASE_URL}/${packageName}`);
-  const data: PackageDetails = await res.json();
+async function fetchFeaturedPackagesDetails(): Promise<
+  PackageDetails[] | never
+> {
+  const promises = FEATURED_PACKAGES.map(async (packageName) => {
+    const res = await fetch(`${BASE_URL}/${packageName}`);
+    const data: PackageDetails = await res.json();
 
-  return data;
+    return data;
+  });
+
+  const featuredPackagesDetails = Promise.all(promises);
+
+  return featuredPackagesDetails;
 }
 
-export { searchPackages, fetchPackageDetails, fetchFeaturedPackages };
+export { searchPackages, fetchPackageDetails, fetchFeaturedPackagesDetails };
