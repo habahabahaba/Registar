@@ -24,7 +24,7 @@ export interface PackageDetails {
   maintainers: {
     name: string;
     email: string;
-  };
+  }[];
   license: string;
   latest: string;
 }

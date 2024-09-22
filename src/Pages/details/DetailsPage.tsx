@@ -11,10 +11,6 @@ import { useLoaderData, useLocation, Link } from 'react-router-dom';
 import type { FC } from 'react';
 import type { DetailsLoaderReturn } from './detailsLoader';
 
-// interface DetailsPageProps {
-//   searchPath?: string | null;
-// }
-
 const DetailsPage: FC = () => {
   const {
     packageDetails: { name, description, license, author, latest },

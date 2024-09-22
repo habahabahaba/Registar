@@ -25,7 +25,7 @@ const PackageListItem: FC<PackageListItemProps> = ({
   const searchPath: string = pathname + search;
   // console.log('searchPath from PackageListItem: ', searchPath);
 
-  // Removing slashes from name:
+  // Removing possible slashes from package name:
   const encodedName = encodePath(name);
 
   // JSX:

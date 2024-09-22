@@ -23,11 +23,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    loader: homeLoader,
     children: [
       {
         index: true,
         element: <HomePage />,
+        loader: homeLoader,
       },
       {
         path: '/search',
