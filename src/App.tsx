@@ -6,11 +6,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Loaders:
 import searchLoader from './Pages/search/searchLoader';
 import detailsLoader from './Pages/details/detailsLoader';
+import homeLoader from './Pages/home/homeLoader';
 // React:
 // Context:
 // Pages:
 import Root from './Pages/Root';
-import HomePage from './Pages/HomePage';
+import HomePage from './Pages/home/HomePage';
 import SearchPage from './Pages/search/SearchPage';
 import DetailsPage from './Pages/details/DetailsPage';
 // Components:
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    loader: homeLoader,
     children: [
       {
         index: true,

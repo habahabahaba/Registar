@@ -37,4 +37,13 @@ async function fetchPackageDetails(
   return data;
 }
 
-export { searchPackages, fetchPackageDetails };
+async function fetchFeaturedPackages(
+  packageName: string
+): Promise<PackageDetails | never> {
+  const res = await fetch(`${BASE_URL}/${packageName}`);
+  const data: PackageDetails = await res.json();
+
+  return data;
+}
+
+export { searchPackages, fetchPackageDetails, fetchFeaturedPackages };
