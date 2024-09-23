@@ -49,7 +49,7 @@ const SearchInput: FC = () => {
         </div>
         <input
           type='text'
-          placeholder='package name...'
+          placeholder='Search by package name...'
           value={input}
           onChange={(ev) => {
             setInput(() => ev.target.value);

@@ -19,11 +19,19 @@ const HomePage: FC = () => {
   // console.log(featuredPackagesDetails);
 
   // JSX:
-  const renderedPackagesDetails = (
-    <Suspense fallback={<p>Top packages ...</p>}>
+  const featuredPackagesFallback = (
+    <div className='flex justify-center text-center  mt-8'>
+      <span className='text-2xl  text-gray-500 '>
+        Loading featured packages...
+      </span>
+    </div>
+  );
+
+  const renderedFeaturedPackages = (
+    <Suspense fallback={featuredPackagesFallback}>
       <Await
         resolve={featuredPackagesDetails}
-        errorElement={<p>Error loading package location!</p>}
+        errorElement={<p>Error loading packages!</p>}
       >
         {(featuredPackagesDetails) => (
           <FeaturedPackages featuredPackages={featuredPackagesDetails} />
@@ -35,14 +43,13 @@ const HomePage: FC = () => {
   return (
     <div className='container py-12 space-y-8'>
       <div className='space-y-6 text-center'>
-        <h1 className='text-6xl font-bold'>NPM Search</h1>
+        <h1 className='text-6xl font-bold'>Node packages Search</h1>
         <p className='mx-auto max-w-[600px] text-gray-500'>
-          Node.js packages viewer.
+          Node.js packages viewer. Use search-field at the top to search
+          packages by name.
         </p>
       </div>
-      <div className='mx-auto grid lg:grid-cols-4 grid-cols-2  items-stretch gap-4'>
-        {renderedPackagesDetails}
-      </div>
+      {renderedFeaturedPackages}
     </div>
   );
 };
