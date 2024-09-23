@@ -1,10 +1,8 @@
 // 3rd party:
-// Utils:
-import { encodePath } from '../../utils';
 // Redux RTK:
 // Store:
 // React Router:
-import { Link, useLoaderData, Await } from 'react-router-dom';
+import { useLoaderData, Await } from 'react-router-dom';
 // React:
 import { Suspense } from 'react';
 // Context:
@@ -17,7 +15,7 @@ import type { FC } from 'react';
 import type { HomeLoaderReturn } from './homeLoader';
 
 const HomePage: FC = () => {
-  const { featuredPackagesDetails } = useLoaderData();
+  const { featuredPackagesDetails } = useLoaderData() as HomeLoaderReturn;
   // console.log(featuredPackagesDetails);
 
   // JSX:
