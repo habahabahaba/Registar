@@ -4,10 +4,12 @@ import { encodePath } from '../../utils';
 // Redux RTK:
 // Store:
 // React Router:
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, Await } from 'react-router-dom';
 // React:
+import { Suspense } from 'react';
 // Context:
 // Components:
+import FeaturedPackages from '../../Components/FeaturedPackages';
 // CSS:
 
 // Types, interfaces and enumns:
@@ -15,37 +17,21 @@ import type { FC } from 'react';
 import type { HomeLoaderReturn } from './homeLoader';
 
 const HomePage: FC = () => {
-  const { featuredPackagesDetails } = useLoaderData() as HomeLoaderReturn;
+  const { featuredPackagesDetails } = useLoaderData();
   // console.log(featuredPackagesDetails);
 
   // JSX:
-  const renderedPackagesDetails = featuredPackagesDetails.map(
-    ({ name, description, maintainers }) => {
-      // Removing possible slashes from package name:
-      const encodedName = encodePath(name);
-
-      return (
-        <div
-          key={name}
-          className='flex flex-col justify-between gap-3 border rounded shadow p-4 min-h-60'
-        >
-          <div className='flex flex-col h-full justify-between gap-1 border-b border-gray-400'>
-            <div className='font-bold text-center'>{name}</div>
-
-            <div className='text-sm text-gray-500'>{description}</div>
-            {maintainers && maintainers.length ? (
-              <div className='text-sm text-gray-500 justify-self-end'>{`Maintainers: ${maintainers.length}`}</div>
-            ) : null}
-          </div>
-          <Link
-            to={`/packages/${encodedName}`}
-            className='py-2 px-6 rounded bg-black text-white text-center w-min mx-auto'
-          >
-            View
-          </Link>
-        </div>
-      );
-    }
+  const renderedPackagesDetails = (
+    <Suspense fallback={<p>Top packages ...</p>}>
+      <Await
+        resolve={featuredPackagesDetails}
+        errorElement={<p>Error loading package location!</p>}
+      >
+        {(featuredPackagesDetails) => (
+          <FeaturedPackages featuredPackages={featuredPackagesDetails} />
+        )}
+      </Await>
+    </Suspense>
   );
 
   return (
