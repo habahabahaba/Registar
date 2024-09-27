@@ -27,4 +27,9 @@ export interface PackageDetails {
   }[];
   license: string;
   latest: string;
+  homepage?: string;
+  repository?: {
+    type?: string;
+    url: string;
+  };
 }

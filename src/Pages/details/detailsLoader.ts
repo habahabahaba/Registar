@@ -27,6 +27,6 @@ export default async function detailsLoader({
   const decodedPackageName = decodePath(packageName);
 
   const packageDetails = await fetchPackageDetails(decodedPackageName);
-
+  console.log('packageDetails: ', packageDetails);
   return { packageDetails };
 }

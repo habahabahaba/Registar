@@ -11,3 +11,7 @@ export function decodePath(path: string): string {
   }
   return path;
 }
+
+export function transformRepoUrl(url: string): string {
+  return url.replace(/(.*)(?=github\.com)/, 'https://').replace(/\.git$/, '');
+}
